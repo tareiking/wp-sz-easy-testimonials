@@ -5,6 +5,8 @@ $defaults  = array(
 	'posts_per_page'  => 2,
 );
 
+$args = apply_filters( 'sz_easy_testimonials_defaults', $args );
+
 $args = wp_parse_args( $args, $defaults );
 
 
