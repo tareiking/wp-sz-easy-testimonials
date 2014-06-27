@@ -30,7 +30,6 @@ if ( $testimonials->have_posts() ): ?>
 			<?php endwhile; ?>
 		</ul>
 	</div>
-
 <?php else: ?>
 	<p>No testimonials to display.</p>
 <?php endif; ?>
