@@ -2,7 +2,7 @@
 
 $defaults  = array(
 	'post_type'			=> 'testimonial',
-	'posts_per_page'	=> 2,
+	'posts_per_page'	=> 5,
 	'show_title'		=> true,
 );
 
