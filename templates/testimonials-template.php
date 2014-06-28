@@ -1,8 +1,9 @@
 <?php
 
 $defaults  = array(
-	'post_type'       => 'testimonial',
-	'posts_per_page'  => 2,
+	'post_type'			=> 'testimonial',
+	'posts_per_page'	=> 2,
+	'show_title'		=> true,
 );
 
 $args = apply_filters( 'sz_easy_testimonials_defaults', $args );
