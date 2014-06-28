@@ -6,10 +6,22 @@ $defaults  = array(
 	'show_title'		=> true,
 );
 
-$args = apply_filters( 'sz_easy_testimonials_defaults', $args );
+$default_css = array(
+	'parent_class'		=> 'testimonials',
+	'item_class'		=> 'testimonial-item',
+	'image_class'		=> 'testimonial-image',
+	'content_class'		=> 'testimonial-content',
+	'title_class'		=> 'testimonial-title',
+);
 
-$args = wp_parse_args( $args, $defaults );
+// Allow developers to adjust the main query args
+$args	= apply_filters( 'sz_easy_testimonials_defaults', $args );
 
+// Allow developers to drop in their own classnames
+$css	= apply_filters( 'sz_easy_testimonals_classnames', $custom_css );
+
+$args	= wp_parse_args( $args, $defaults );
+$css	= wp_parse_args( $custom_css, $default_css );
 
 $testimonials = new WP_Query( $args );
 
