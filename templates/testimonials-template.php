@@ -18,10 +18,10 @@ $default_css = array(
 $args	= apply_filters( 'sz_easy_testimonials_defaults', $args );
 
 // Allow developers to drop in their own classnames
-$css	= apply_filters( 'sz_easy_testimonals_classnames', $custom_css );
+$css	= apply_filters( 'sz_easy_testimonals_classnames', $_css );
 
 $args	= wp_parse_args( $args, $defaults );
-$css	= wp_parse_args( $custom_css, $default_css );
+$css	= wp_parse_args( $css, $default_css );
 
 $testimonials = new WP_Query( $args );
 
