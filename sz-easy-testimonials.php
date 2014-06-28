@@ -76,6 +76,8 @@ private static $instance;
 		);
 		register_post_type( 'testimonial', $args );
 
+		add_image_size( 'testimonial-thumb', 300, 9999 );
+
 	}
 
 	public function do_testimonials() {
@@ -88,10 +90,6 @@ private static $instance;
 			$return_template = $plugindir . '/templates/' . $templatefilename;
 			require_once( $return_template );
 		}
-	}
-
-	function add_image_sizes(){
-		add_image_size( 'testimonial-thumb', 300, 9999 );
 	}
 
 }
