@@ -32,9 +32,3 @@ add_action('widgets_init', 'register_sz_easy_testimonials_widget');
 function register_sz_easy_testimonials_widget() {
 	register_widget( 'SZ_Easy_Testimonials_Widget' );
 }
-
-function show_5( $args ){
-	$args['posts_per_page'] = 5;
-	return $args;
-}
-add_action('sz_easy_testimonials_defaults' , 'show_5' );
