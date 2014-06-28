@@ -28,7 +28,7 @@ $testimonials = new WP_Query( $args );
 if ( $testimonials->have_posts() ): ?>
 
 	<div class="testimonials">
-		<ul class="testimonial-item">
+		<ul>
 			<?php while ( $testimonials->have_posts() ) : $testimonials->the_post(); ?>
 
 				<li>
