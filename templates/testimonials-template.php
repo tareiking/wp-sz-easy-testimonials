@@ -17,8 +17,6 @@ $default_css = array(
 // Allow developers to adjust the main query args
 $args	= apply_filters( 'sz_easy_testimonials_defaults', $args );
 
-
-
 // Allow developers to drop in their own classnames
 $css	= apply_filters( 'sz_easy_testimonals_classnames', $_css );
 
