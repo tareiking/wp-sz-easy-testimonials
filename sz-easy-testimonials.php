@@ -82,6 +82,11 @@ private static $instance;
 
 	}
 
+	public static function get_custom_excerpt($content = '', $limit = 25){
+		$trimmed = wp_trim_words( $content, $limit, '...' );
+		return $trimmed;
+	}
+
 	public function do_testimonials() {
 		$plugindir        = dirname( __FILE__ );
 		$templatefilename = 'testimonials-template.php';
