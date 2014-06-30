@@ -23,10 +23,14 @@ class SZ_Easy_Testimonials_Widget extends WP_Widget
 		echo $before_widget;
 		echo '<h3 class="widget-title">' . $instance['title'] . '</h3>';
 
-				// Allow developers to adjust the main query args
-		$args	= apply_filters( 'sz_easy_testimonials_defaults', $args );
+		// Allow developers to adjust the main query args
+		$args = array(
+			'excerpt_limit' => 20,
+			);
+		$args = apply_filters( 'sz_easy_testimonials_defaults', $args );
+
 		// Allow developers to drop in their own classnames
-		$css	= apply_filters( 'sz_easy_testimonals_classnames', $_css );
+		$css = apply_filters( 'sz_easy_testimonals_classnames', $_css );
 
 		if ( $instance['posts_per_page'] = '' || $instance['posts_per_page'] = 0 ) {
 			$instance['post_per_page'] = 5;
@@ -60,7 +64,7 @@ class SZ_Easy_Testimonials_Widget extends WP_Widget
 
 						<blockquote>
 							<span class="<?php echo $css['title_class']; ?>"><strong><?php the_title(); ?></strong></span>
-							<?php echo SZ_Easy_Testimonials::get_custom_excerpt( get_the_excerpt(), 18 ); ?>
+							<?php echo SZ_Easy_Testimonials::get_custom_excerpt( get_the_excerpt(), $args['excerpt_limit'] ); ?>
 						</blockquote>
 
 					</div>
