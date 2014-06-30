@@ -46,7 +46,7 @@ private static $instance;
 			'singular_name'       => 'Testimonial',
 			'menu_name'           => 'Testimonials',
 			'parent_item_colon'   => 'Parent Item:',
-			'all_items'           => 'All Items',
+			'all_items'           => 'All Testimonials',
 			'view_item'           => 'View Item',
 			'add_new_item'        => 'Add New Item',
 			'add_new'             => 'Add New',
