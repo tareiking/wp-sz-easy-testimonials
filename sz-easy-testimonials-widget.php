@@ -65,6 +65,13 @@ class SZ_Easy_Testimonials_Widget extends WP_Widget
 				'order'                  => 'ASC',
 		));
 
+		/**
+		 * Render our widget
+		 */
+		echo $args['before_widget'];
+		echo '<h3 class="widget-title">' . $instance['title'] . '</h3>'; ?>
+
+		<!-- Testimonials Widget -->
 		<div class="<?php echo $css['parent_class']; ?> testimonials">
 			<ul>
 				<?php while ( $query->have_posts() ) : $query->the_post(); ?>
@@ -75,9 +82,7 @@ class SZ_Easy_Testimonials_Widget extends WP_Widget
 				?>
 				<li class="<?php echo $css['item_class']; ?>">
 					<?php if ( has_post_thumbnail() ): ?>
-						<div class="testimonial-thumb-wrapper circular-image" style="background: url(<?php echo $thumb_url; ?>) no-repeat;">
-							<?php // the_post_thumbnail( 'testimonial-thumb' , array( 'class' => $css['image_class'] ) ); ?>
-						</div>
+						<div class="testimonial-thumb-wrapper circular-image" style="background: url(<?php echo $thumb_url; ?>) no-repeat;"></div>
 					<?php endif; ?>
 
 					<div class="<?php echo $css['content_class']; ?>">
@@ -95,9 +100,10 @@ class SZ_Easy_Testimonials_Widget extends WP_Widget
 			</ul>
 		</div>
 
+		<?php echo $args['after_widget']; ?>
+
 		<?php wp_reset_query();
 
-		echo $after_widget;
 	}
 
 
