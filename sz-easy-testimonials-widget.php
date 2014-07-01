@@ -13,6 +13,27 @@ class SZ_Easy_Testimonials_Widget extends WP_Widget
 
 		$this->WP_Widget( 'sz_easy_testimonial_widget', 'Easy Testimonial Widget', $widget_opts );
 	}
+
+	public static function get_defaults(){
+
+		$defaults = array(
+
+			'css' => array(
+				'parent_class'		=> 'testimonials',
+				'item_class'		=> 'testimonial-item',
+				'image_class'		=> 'testimonial-image',
+				'content_class'		=> 'testimonial-content',
+				'title_class'		=> 'testimonial-title',
+				),
+
+			'args' => array(
+				'excerpt_limit'		=> 25,
+				)
+		);
+
+		return $defaults;
+	}
+
 	/**
 	 * Render the widget here
 	 * @todo create a combined template similar to the do_testimonials() function
@@ -20,17 +41,19 @@ class SZ_Easy_Testimonials_Widget extends WP_Widget
 	 */
 	function widget( $args, $instance ) {
 
-		echo $before_widget;
-		echo '<h3 class="widget-title">' . $instance['title'] . '</h3>';
+		/**
+		 * Setup the widget variables
+		 */
+		global $post;
 
-		// Allow developers to adjust the main query args
-		$args = array(
-			'excerpt_limit' => 20,
-			);
+		$default_args = SZ_Easy_Testimonials_Widget::get_defaults()['args'];
+		$default_css = SZ_Easy_Testimonials_Widget::get_defaults()['css'];
+
 		$args = apply_filters( 'sz_easy_testimonials_defaults', $args );
+		$css = apply_filters( 'sz_easy_testimonals_classnames', __return_empty_array() );
 
-		// Allow developers to drop in their own classnames
-		$css = apply_filters( 'sz_easy_testimonals_classnames', $_css );
+		$css = wp_parse_args( $css, $default_css );
+		$args = wp_parse_args( $args, $default_args );
 
 		if ( $instance['posts_per_page'] = '' || $instance['posts_per_page'] = 0 ) {
 			$instance['post_per_page'] = 5;
