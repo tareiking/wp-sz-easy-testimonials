@@ -59,24 +59,21 @@ class SZ_Easy_Testimonials_Widget extends WP_Widget
 			$instance['post_per_page'] = 5;
 		}
 
-		// Generate a child page grid if current page is a parent.
-		$testimonials = new WP_Query( array (
+		$query = new WP_Query( array (
 				'post_type'              => 'testimonial',
 				'posts_per_page'         => $instance['post_per_page'],
 				'order'                  => 'ASC',
-			) ); ?>
+		));
 
 		<div class="<?php echo $css['parent_class']; ?> testimonials">
-				<ul>
-				<?php while ( $testimonials->have_posts() ) : $testimonials->the_post(); ?>
+			<ul>
+				<?php while ( $query->have_posts() ) : $query->the_post(); ?>
 
 				<?php
 					$thumb = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'thumbnail' );
 					$thumb_url = $thumb['0'];
 				?>
-
 				<li class="<?php echo $css['item_class']; ?>">
-
 					<?php if ( has_post_thumbnail() ): ?>
 						<div class="testimonial-thumb-wrapper circular-image" style="background: url(<?php echo $thumb_url; ?>) no-repeat;">
 							<?php // the_post_thumbnail( 'testimonial-thumb' , array( 'class' => $css['image_class'] ) ); ?>
