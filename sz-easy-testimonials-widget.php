@@ -118,6 +118,9 @@ class SZ_Easy_Testimonials_Widget extends WP_Widget
 		else {
 			$title = __( 'New title', 'text_domain' );
 		}
+		if ( ! isset( $instance['post_per_page'] ) ) {
+			$instance['post_per_page'] = 5;
+		}
 ?>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
