@@ -62,7 +62,6 @@ private static $instance;
 			'labels'              => $labels,
 			'supports'            => array( 'title', 'editor', 'thumbnail', 'revisions' ),
 			'hierarchical'        => true,
-			'rewrite' => array('slug'=>''),
 			'public'              => true,
 			'show_ui'             => true,
 			'show_in_menu'        => true,
