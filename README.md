@@ -31,6 +31,17 @@ As a Template Tag
 	}
 ```
 
+As a rotator
+Add flexslider.js and add this to javascript
+```
+	if ( $('.testimonials').length ) {
+		$('.testimonials').flexslider({
+			directionNav: false
+		});
+	}
+
+```
+
 Currently template tags don't support passing options very intuitively.
 
 Roadmap
