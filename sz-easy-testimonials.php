@@ -86,9 +86,11 @@ private static $instance;
 		return $trimmed;
 	}
 
-	public function do_testimonials() {
-		$plugindir        = dirname( __FILE__ );
+	public static function do_testimonials( $widget_args = array(), $widget_instance = array() ) {
+
+		$plugindir	= dirname( __FILE__ );
 		$templatefilename = 'testimonials-template.php';
+
 		if ( file_exists( TEMPLATEPATH . '/' . $templatefilename ) ) {
 			$return_template = TEMPLATEPATH . '/' . $templatefilename;
 			require_once( $return_template );
