@@ -93,10 +93,10 @@ private static $instance;
 
 		if ( file_exists( TEMPLATEPATH . '/' . $templatefilename ) ) {
 			$return_template = TEMPLATEPATH . '/' . $templatefilename;
-			require_once( $return_template );
+			require( $return_template );
 		} else {
 			$return_template = $plugindir . '/templates/' . $templatefilename;
-			require_once( $return_template );
+			require( $return_template );
 		}
 	}
 
