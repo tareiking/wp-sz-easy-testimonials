@@ -16,4 +16,19 @@ Roadmap
 - [ ] Rethink visibility / rendering options and implementation
 - [ ] Add specific support for media queries
 - [ ] Consider a carousel / slider option
+- [ ] Add Basic CSS
+- [ ] Create a more intuitive method of using ```template tags```
 
+## Usage
+
+As Widget (preferred)
+``` Add to widget area and adjust options```
+
+As a Template Tag
+```
+	if ( class_exists( 'SZ_Easy_Testimonials' ) ) {
+		SZ_Easy_Testimonials::do_testimonials();
+	}
+```
+
+Currently template tags don't support passing options very intuitively.

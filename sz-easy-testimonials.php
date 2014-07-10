@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: Sennza Easy Testimonials
-Version: 0.1-alpha
-Description: @todo
-Author: @todo
-Author URI: @todo
-Plugin URI: @todo
+Version: 0.2
+Description: An easy to use Testimonial slider and display
+Author: Tarei King
+Author URI: http://tarei.me
+Plugin URI: http://tarei.me
 Text Domain: sz-easy-testimonials
 Domain Path: /languages
 */
