@@ -14,7 +14,7 @@ class SZ_Easy_Testimonials_Widget extends WP_Widget
 		$this->WP_Widget( 'sz_easy_testimonial_widget', 'Easy Testimonial Widget', $widget_opts );
 	}
 
-	public static function get_defaults(){
+	public static function get_widget_defaults(){
 
 		$defaults = array(
 
@@ -28,6 +28,9 @@ class SZ_Easy_Testimonials_Widget extends WP_Widget
 
 			'args' => array(
 				'excerpt_limit'		=> 25,
+				'post_type'			=> 'testimonial',
+				'posts_per_page'	=> 5,
+				'show_title'		=> true,
 				)
 		);
 
