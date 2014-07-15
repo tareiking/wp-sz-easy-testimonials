@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: Sennza Easy Testimonials
-Version: 0.1-alpha
-Description: @todo
-Author: @todo
-Author URI: @todo
-Plugin URI: @todo
+Version: 0.1
+Description: Create and display customer testimonials for your WordPress site.
+Author: Tarei King, Bronson Quick, Lachlan Macpherson
+Author URI: http://sennza.com.au
+Plugin URI: http://sennza.com.au
 Text Domain: sz-easy-testimonials
 Domain Path: /languages
 */

@@ -17,3 +17,9 @@ Roadmap
 - [ ] Add specific support for media queries
 - [ ] Consider a carousel / slider option
 
+Changelog
+
+- 0.1
+	- Use shared template file for widget + template tags
+	- Limit number of displayed testimonials
+	- Link image to page
