@@ -48,19 +48,13 @@ class SZ_Easy_Testimonials_Widget extends WP_Widget
 
 		$defaults = SZ_Easy_Testimonials_Widget::get_defaults();
 
-		$args = apply_filters( 'sz_easy_testimonials_defaults', $args );
-		$css = apply_filters( 'sz_easy_testimonals_classnames', __return_empty_array() );
-
-		$css = wp_parse_args( $css, $defaults['css'] );
-		$args = wp_parse_args( $args, $defaults['args'] );
-
-		if ( $instance['posts_per_page'] = '' || $instance['posts_per_page'] = 0 ) {
-			$instance['post_per_page'] = 5;
+		if ( $instance['posts_per_page'] == '' || $instance['posts_per_page'] == 0 ) {
+			$instance['posts_per_page'] = 5;
 		}
 
 		$query = new WP_Query( array (
 				'post_type'              => 'testimonial',
-				'posts_per_page'         => $instance['post_per_page'],
+				'posts_per_page'         => (int) $instance['posts_per_page'],
 				'order'                  => 'ASC',
 		));
 
