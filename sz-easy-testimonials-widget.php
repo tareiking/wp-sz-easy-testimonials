@@ -118,8 +118,8 @@ class SZ_Easy_Testimonials_Widget extends WP_Widget
 		else {
 			$title = __( 'New title', 'text_domain' );
 		}
-		if ( ! isset( $instance['post_per_page'] ) ) {
-			$instance['post_per_page'] = 5;
+		if ( ! isset( $instance['posts_per_page'] ) ) {
+			$instance['posts_per_page'] = 5;
 		}
 ?>
 		<p>
@@ -127,8 +127,8 @@ class SZ_Easy_Testimonials_Widget extends WP_Widget
 			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'post_per_page' ); ?>"><?php _e( '# of testimonials shown:' ); ?></label>
-			<input class="widefat" id="<?php echo $this->get_field_id( 'post_per_page' ); ?>" name="<?php echo $this->get_field_name( 'post_per_page' ); ?>" type="text" value="<?php echo esc_attr( $instance['post_per_page'] ); ?>">
+			<label for="<?php echo $this->get_field_id( 'posts_per_page' ); ?>"><?php _e( '# of Testimonials visible' ); ?></label>
+			<input class="widefat" id="<?php echo $this->get_field_id( 'posts_per_page' ); ?>" name="<?php echo $this->get_field_name( 'posts_per_page' ); ?>" type="text" value="<?php echo esc_attr( $instance['posts_per_page'] ); ?>">
 		</p>
 		<?php
 	}
@@ -137,7 +137,7 @@ class SZ_Easy_Testimonials_Widget extends WP_Widget
 	function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
 		$instance['title'] = strip_tags( $new_instance['title'] );
-		$instance['post_per_page'] = strip_tags( $new_instance['post_per_page'] );
+		$instance['posts_per_page'] = strip_tags( $new_instance['posts_per_page'] );
 		return $instance;
 	}
 }
