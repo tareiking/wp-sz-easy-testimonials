@@ -62,43 +62,18 @@ class SZ_Easy_Testimonials_Widget extends WP_Widget
 		 * Render our widget
 		 */
 		echo $args['before_widget'];
-		echo '<h3 class="widget-title">' . $instance['title'] . '</h3>'; ?>
 
-		<!-- Testimonials Widget -->
-		<div class="<?php echo $css['parent_class']; ?> testimonials">
-			<ul>
-				<?php while ( $query->have_posts() ) : $query->the_post(); ?>
+		if ( $instance['title'] != '' ){
+			echo '<h3 class="widget-title">' . $instance['title'] . '</h3>';
+		}
+			SZ_Easy_Testimonials::do_testimonials( $query );
 
-				<?php
-					$thumb = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'thumbnail' );
-					$thumb_url = $thumb['0'];
-				?>
-				<li class="<?php echo $css['item_class']; ?>">
-					<?php if ( has_post_thumbnail() ): ?>
-						<div class="testimonial-thumb-wrapper circular-image" style="background: url(<?php echo $thumb_url; ?>) no-repeat;"></div>
-					<?php endif; ?>
+		echo $args['after_widget'];
 
-					<div class="<?php echo $css['content_class']; ?>">
+		wp_reset_query();
 
-						<blockquote>
-							<span class="<?php echo $css['title_class']; ?>"><strong><?php the_title(); ?></strong></span>
-							<?php echo SZ_Easy_Testimonials::get_custom_excerpt( get_the_excerpt(), $args['excerpt_limit'] ); ?>
-						</blockquote>
-
-					</div>
-
-				</li>
-
-				<?php endwhile; ?>
-			</ul>
-		</div>
-
-		<?php echo $args['after_widget']; ?>
-
-		<?php wp_reset_query();
 
 	}
-
 
 	/**
 	 * Back-end widget form.
