@@ -88,8 +88,10 @@ private static $instance;
 	}
 
 	public static function do_testimonials( $query = false ) {
-		$plugindir        = dirname( __FILE__ );
-		$templatefilename = 'testimonials-template.php';
+
+		$plugindir 			= dirname( __FILE__ );
+		$templatefilename 	= 'testimonials-template.php';
+
 		if ( file_exists( TEMPLATEPATH . '/' . $templatefilename ) ) {
 			$return_template = TEMPLATEPATH . '/' . $templatefilename;
 			require( $return_template );
@@ -97,6 +99,7 @@ private static $instance;
 			$return_template = $plugindir . '/templates/' . $templatefilename;
 			require( $return_template );
 		}
+
 	}
 
 	public static function get_default_query( $query = '' ){
@@ -129,6 +132,17 @@ private static $instance;
 		$query = new WP_Query( $args );
 
 		return $query;
+
+	}
+
+	public static function get_thumb_url(){
+
+		global $post;
+
+		$thumb = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'thumbnail' );
+		$thumb_url = $thumb['0'];
+
+		return $thumb_url;
 	}
 
 }

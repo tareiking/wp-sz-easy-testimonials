@@ -21,13 +21,9 @@ if ( $testimonials->have_posts() ): ?>
 		<ul>
 			<?php while ( $testimonials->have_posts() ) : $testimonials->the_post(); ?>
 
-			<?php
-				$thumb = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'thumbnail' );
-				$thumb_url = $thumb['0'];
-			?>
 			<li class="<?php echo $css['item_class']; ?>">
 				<?php if ( has_post_thumbnail() ) { ?>
-					<div class="testimonial-thumb-wrapper circular-image" style="background: url(<?php echo $thumb_url; ?>) no-repeat;"></div>
+					<div class="testimonial-thumb-wrapper circular-image" style="background: url(<?php echo SZ_Easy_Testimonials::get_thumb_url(); ?>) no-repeat;"></div>
 				<?php } else { ?>
 					<div class="testimonial-thumb-wrapper circular-image" style="background-color: #99cc33;"></div>
 				<?php } ?>
