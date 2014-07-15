@@ -63,10 +63,24 @@ class SZ_Easy_Testimonials_Widget extends WP_Widget
 		 */
 		echo $args['before_widget'];
 
-		if ( $instance['title'] != '' ){
-			echo '<h3 class="widget-title">' . $instance['title'] . '</h3>';
-		}
-			SZ_Easy_Testimonials::do_testimonials( $query );
+		// Render title with link
+		// @TODO is there a better way to do this?
+		if ( $instance['title'] != '' ){ ?>
+			<h3 class="widget-title">
+				<?php if ( $instance['testimonials_link'] != '' ): ?>
+					<a href="<?php echo $instance['testimonials_link']; ?>">
+				<?php endif ?>
+
+					<?php echo $instance['title']; ?>
+
+				<?php if ( $instance['testimonials_link'] != '' ): ?>
+					</a>
+				<?php endif ?>
+			</h3>
+
+		<?php }
+
+		SZ_Easy_Testimonials::do_testimonials( $query );
 
 		echo $args['after_widget'];
 
@@ -90,6 +104,9 @@ class SZ_Easy_Testimonials_Widget extends WP_Widget
 		if ( ! isset( $instance['posts_per_page'] ) ) {
 			$instance['posts_per_page'] = 5;
 		}
+		if ( ! isset( $instance['testimonials_link'] ) ) {
+			$instance['posts_per_page'] = '';
+		}
 ?>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
@@ -99,6 +116,10 @@ class SZ_Easy_Testimonials_Widget extends WP_Widget
 			<label for="<?php echo $this->get_field_id( 'posts_per_page' ); ?>"><?php _e( '# of Testimonials visible' ); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id( 'posts_per_page' ); ?>" name="<?php echo $this->get_field_name( 'posts_per_page' ); ?>" type="text" value="<?php echo esc_attr( $instance['posts_per_page'] ); ?>">
 		</p>
+		<p>
+			<label for="<?php echo $this->get_field_id( 'testimonials_link' ); ?>"><?php _e( 'Testimonials link: (eg: http://mydomain.com/testimonials/)' ); ?></label>
+			<input class="widefat" id="<?php echo $this->get_field_id( 'testimonials_link' ); ?>" name="<?php echo $this->get_field_name( 'testimonials_link' ); ?>" type="text" value="<?php echo esc_attr( $instance['testimonials_link'] ); ?>">
+		</p>
 		<?php
 	}
 
@@ -107,6 +128,7 @@ class SZ_Easy_Testimonials_Widget extends WP_Widget
 		$instance = $old_instance;
 		$instance['title'] = strip_tags( $new_instance['title'] );
 		$instance['posts_per_page'] = strip_tags( $new_instance['posts_per_page'] );
+		$instance['testimonials_link'] = strip_tags( $new_instance['testimonials_link'] );
 		return $instance;
 	}
 }
