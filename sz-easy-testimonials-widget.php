@@ -65,18 +65,11 @@ class SZ_Easy_Testimonials_Widget extends WP_Widget
 		echo $args['before_widget'];
 
 		// Render title with link
-		// @TODO is there a better way to do this?
 		if ( $instance['title'] != '' ){ ?>
 			<h3 class="widget-title">
-				<?php if ( $instance['testimonials_link'] != '' ): ?>
-					<a href="<?php echo $instance['testimonials_link']; ?>">
-				<?php endif ?>
-
+				<a href="<?php echo get_post_type_archive_link( 'testimonial' ); ?>">
 					<?php echo $instance['title']; ?>
-
-				<?php if ( $instance['testimonials_link'] != '' ): ?>
-					</a>
-				<?php endif ?>
+				</a>
 			</h3>
 
 		<?php }
