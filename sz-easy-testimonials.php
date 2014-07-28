@@ -62,7 +62,6 @@ private static $instance;
 			'labels'              => $labels,
 			'supports'            => array( 'title', 'editor', 'thumbnail', 'revisions' ),
 			'hierarchical'        => true,
-			'rewrite' => array('slug'=>''),
 			'public'              => true,
 			'show_ui'             => true,
 			'show_in_menu'        => true,
@@ -73,13 +72,12 @@ private static $instance;
 			'can_export'          => true,
 			'has_archive'         => true,
 			'exclude_from_search' => true,
-			'publicly_queryable'  => false,
+			'publicly_queryable'  => true,
 			'capability_type'     => 'page',
 		);
 		register_post_type( 'testimonial', $args );
 
 		add_image_size( 'testimonial-thumb', 300, 9999 );
-
 	}
 
 	public static function get_custom_excerpt($content = '', $limit = 25){
