@@ -117,9 +117,18 @@ private static $instance;
 			'title_class'       => 'testimonial-title',
 		);
 
-		// Allow developers to adjust the main query args
+		return array( $defaults, $default_css );
+
+	}
+
+	public static function get_default_query( $query = '' ){
+
+		if ( $query != '' ) { return $query; }
+
+		$defaults 		= SZ_Easy_Testimonials::get_defaults()['defaults'];
+		$default_css 	= SZ_Easy_Testimonials::get_defaults()['default_css'];
+
 		$args   = apply_filters( 'sz_easy_testimonials_defaults', $args );
-		// Allow developers to drop in their own classnames
 		$css    = apply_filters( 'sz_easy_testimonals_classnames', $_css );
 
 		$args   = wp_parse_args( $args, $defaults );
