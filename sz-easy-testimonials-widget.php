@@ -53,9 +53,10 @@ class SZ_Easy_Testimonials_Widget extends WP_Widget
 		}
 
 		$query = new WP_Query( array (
-				'post_type'              => 'testimonial',
-				'posts_per_page'         => (int) $instance['posts_per_page'],
-				'order'                  => 'ASC',
+			'post_type'       => 'testimonial',
+			'posts_per_page'  => (int) $instance['posts_per_page'],
+			'order'           => 'ASC',
+			'orderby'         => 'menu_order',
 		));
 
 		/**

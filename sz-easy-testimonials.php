@@ -102,13 +102,11 @@ private static $instance;
 
 	}
 
-	public static function get_default_query( $query = '' ){
-
-		if ( $query != '' ) { return $query; }
+	public static function get_defaults(){
 
 		$defaults  = array(
 			'post_type'         => 'testimonial',
-			'orderby'           => 'rand',
+			'orderby'           => 'menu_order',
 			'posts_per_page'    => -1,
 			'show_title'        => true,
 		);
