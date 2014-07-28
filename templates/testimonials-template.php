@@ -22,12 +22,14 @@ if ( $testimonials->have_posts() ): ?>
 			<?php while ( $testimonials->have_posts() ) : $testimonials->the_post(); ?>
 
 			<li class="<?php echo $css['item_class']; ?>">
-				<?php if ( has_post_thumbnail() ) { ?>
-					<div class="testimonial-thumb-wrapper circular-image" style="background: url(<?php echo SZ_Easy_Testimonials::get_thumb_url(); ?>) no-repeat;"></div>
-				<?php } else { ?>
-					<div class="testimonial-thumb-wrapper circular-image" style="background-color: #99cc33;"></div>
-				<?php } ?>
+				<a href="<?php echo get_post_type_archive_link( 'testimonial' ); ?>">
 
+					<?php if ( has_post_thumbnail() ) { ?>
+						<div class="testimonial-thumb-wrapper circular-image" style="background: url(<?php echo SZ_Easy_Testimonials::get_thumb_url(); ?>) no-repeat;"></div>
+					<?php } else { ?>
+						<div class="testimonial-thumb-wrapper circular-image" style="background-color: #99cc33;"></div>
+					<?php } ?>
+				</a>
 				<div class="<?php echo $css['content_class']; ?>">
 
 					<blockquote>

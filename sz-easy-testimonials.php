@@ -75,6 +75,7 @@ private static $instance;
 			'publicly_queryable'  => true,
 			'capability_type'     => 'page',
 		);
+
 		register_post_type( 'testimonial', $args );
 
 		add_image_size( 'testimonial-thumb', 300, 9999 );
@@ -124,9 +125,6 @@ private static $instance;
 	public static function get_default_query( $query = '' ){
 
 		if ( $query != '' ) { return $query; }
-
-		$defaults 		= SZ_Easy_Testimonials::get_defaults()['defaults'];
-		$default_css 	= SZ_Easy_Testimonials::get_defaults()['default_css'];
 
 		$args   = apply_filters( 'sz_easy_testimonials_defaults', $args );
 		$css    = apply_filters( 'sz_easy_testimonals_classnames', $_css );
