@@ -83,7 +83,7 @@ private static $instance;
 	}
 
 	public static function get_custom_excerpt($content = '', $limit = 25){
-		$trimmed = wp_trim_words( $content, $limit, '...' );
+		$trimmed = wp_trim_words( $content, $limit, '' );
 		return $trimmed;
 	}
 
