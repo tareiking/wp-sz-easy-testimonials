@@ -74,6 +74,7 @@ private static $instance;
 			'exclude_from_search' => true,
 			'publicly_queryable'  => true,
 			'capability_type'     => 'page',
+			'rewrite'             => 'slug',
 		);
 
 		register_post_type( 'testimonial', $args );
