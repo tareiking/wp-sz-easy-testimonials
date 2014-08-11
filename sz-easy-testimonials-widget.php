@@ -52,12 +52,18 @@ class SZ_Easy_Testimonials_Widget extends WP_Widget
 			$instance['posts_per_page'] = 5;
 		}
 
-		$query = new WP_Query( array (
+		$args = array (
 			'post_type'       => 'testimonial',
 			'posts_per_page'  => (int) $instance['posts_per_page'],
 			'order'           => 'ASC',
 			'orderby'         => 'menu_order',
-		));
+		);
+
+		if ( ! $instance['featured'] == ''){
+			$args['p'] = $instance['featured'];
+		}
+
+		$query = new WP_Query( $args );
 
 		/**
 		 * Render our widget
@@ -80,7 +86,6 @@ class SZ_Easy_Testimonials_Widget extends WP_Widget
 
 		wp_reset_query();
 
-
 	}
 
 	/**
@@ -101,11 +106,42 @@ class SZ_Easy_Testimonials_Widget extends WP_Widget
 		if ( ! isset( $instance['testimonials_link'] ) ) {
 			$instance['posts_per_page'] = '';
 		}
-?>
+		if ( ! isset( $instance['featured'] ) ) {
+			$instance['featured'] = '';
+			$featured = '';
+		} else {
+			$featured = $instance['featured'];
+		}
+
+		// Get all testimonials
+		$query_args = array(
+			'post_type'         => 'testimonial',
+			'orderby'           => 'menu_order',
+			'posts_per_page'    => -1,
+			'show_title'        => true,
+		);
+
+		$testimonials = new WP_Query( $query_args ); ?>
+
 		<p>
 			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
 		</p>
+
+		<?php if ( $testimonials->have_posts() ) : ?>
+		<p>
+			<label for="<?php echo $this->get_field_id( 'featured' ); ?>"><?php _e( 'Featured Testimonial: <br>If selected, only one testimonial will be shown.' ); ?></label>
+			<select name="<?php echo $this->get_field_name( 'featured' ); ?>" id="<?php echo $this->get_field_id( 'featured' ); ?>" class="widefat">
+				<option value=""></option>
+				<?php
+				while ( $testimonials->have_posts() ) : $testimonials->the_post();
+					printf( '<option value="%s" %s>%s</option>', get_the_ID(), selected( get_the_ID(), $instance['featured'], 0 ), get_the_title() );
+				endwhile;
+				?>
+			</select>
+		</p>
+		<?php endif ?>
+
 		<p>
 			<label for="<?php echo $this->get_field_id( 'posts_per_page' ); ?>"><?php _e( '# of Testimonials visible' ); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id( 'posts_per_page' ); ?>" name="<?php echo $this->get_field_name( 'posts_per_page' ); ?>" type="text" value="<?php echo esc_attr( $instance['posts_per_page'] ); ?>">
@@ -114,7 +150,10 @@ class SZ_Easy_Testimonials_Widget extends WP_Widget
 			<label for="<?php echo $this->get_field_id( 'testimonials_link' ); ?>"><?php _e( 'Testimonials link: (eg: http://mydomain.com/testimonials/)' ); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id( 'testimonials_link' ); ?>" name="<?php echo $this->get_field_name( 'testimonials_link' ); ?>" type="text" value="<?php echo esc_attr( $instance['testimonials_link'] ); ?>">
 		</p>
+
 		<?php
+		wp_reset_query();
+
 	}
 
 	// updates the widget options when saved.
@@ -123,6 +162,7 @@ class SZ_Easy_Testimonials_Widget extends WP_Widget
 		$instance['title'] = strip_tags( $new_instance['title'] );
 		$instance['posts_per_page'] = strip_tags( $new_instance['posts_per_page'] );
 		$instance['testimonials_link'] = strip_tags( $new_instance['testimonials_link'] );
+		$instance['featured'] = strip_tags( $new_instance['featured'] );
 		return $instance;
 	}
 }
