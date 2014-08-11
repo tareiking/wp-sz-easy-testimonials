@@ -1,13 +1,14 @@
 <?php
 /*
 Plugin Name: Sennza Easy Testimonials
-Version: 0.1
+Version: 0.3
 Description: Create and display customer testimonials for your WordPress site.
-Author: Tarei King, Bronson Quick, Lachlan Macpherson
-Author URI: http://sennza.com.au
-Plugin URI: http://sennza.com.au
+Author: Tarei King
+Author URI: http://tarei.me
 Text Domain: sz-easy-testimonials
 Domain Path: /languages
+GitHub Plugin URI: tareiking/wp-sz-easy-testimonials
+GitHub Plugin URI: https://github.com/tareiking/wp-sz-easy-testimonials
 */
 
 if ( ! class_exists('SZ_Easy_Testimonials')) {

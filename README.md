@@ -1,4 +1,4 @@
-wp-sz-easy-testimonials
+WP SZ Easy Testimonials Plugin
 =======================
 
 The starting point of a simple to use testimonial widget for WordPress
