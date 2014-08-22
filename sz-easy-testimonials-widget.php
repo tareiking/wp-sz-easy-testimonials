@@ -108,7 +108,7 @@ class SZ_Easy_Testimonials_Widget extends WP_Widget
 			$instance['posts_per_page'] = 5;
 		}
 		if ( ! isset( $instance['testimonials_link'] ) ) {
-			$instance['posts_per_page'] = '';
+			$instance['testimonials_link'] = '';
 		}
 		if ( ! isset( $instance['featured'] ) ) {
 			$instance['featured'] = '';
