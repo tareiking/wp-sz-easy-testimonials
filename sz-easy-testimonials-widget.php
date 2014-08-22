@@ -59,9 +59,13 @@ class SZ_Easy_Testimonials_Widget extends WP_Widget
 			'orderby'         => 'menu_order',
 		);
 
+
 		if ( ! $instance['featured'] == ''){
 			$args['p'] = $instance['featured'];
 		}
+
+		// If testimonial has already been set in post_meta
+		$args = apply_filters( 'sz_testimonial_display_query', $args );
 
 		$query = new WP_Query( $args );
 
