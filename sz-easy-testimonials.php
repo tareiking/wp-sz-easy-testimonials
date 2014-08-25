@@ -89,7 +89,7 @@ private static $instance;
 		return $trimmed;
 	}
 
-	public static function do_testimonials( $query = false ) {
+	public static function do_testimonials( $query = false, $instance = null ) {
 
 		$plugindir 			= dirname( __FILE__ );
 		$templatefilename 	= 'testimonials-template.php';

@@ -84,7 +84,7 @@ class SZ_Easy_Testimonials_Widget extends WP_Widget
 
 		<?php }
 
-		SZ_Easy_Testimonials::do_testimonials( $query );
+		SZ_Easy_Testimonials::do_testimonials( $query, $instance );
 
 		echo $args['after_widget'];
 
