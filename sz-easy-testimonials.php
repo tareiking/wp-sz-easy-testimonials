@@ -151,6 +151,17 @@ private static $instance;
 		return $thumb_url;
 	}
 
+	public static function get_testimonial_link(){
+
+		if ( isset( $instance ) ) {
+			if ( $instance[ 'testimonials_link' ] ) {
+				return $instance[ 'testimonials_link'];
+			}
+		}
+
+		return get_post_type_archive_link( 'testimonial' );
+	}
+
 }
 
 } // endif

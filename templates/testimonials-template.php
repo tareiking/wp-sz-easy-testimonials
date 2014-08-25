@@ -22,7 +22,7 @@ if ( $testimonials->have_posts() ): ?>
 			<?php while ( $testimonials->have_posts() ) : $testimonials->the_post(); ?>
 
 			<li class="<?php echo $css['item_class']; ?>">
-				<a href="<?php echo get_post_type_archive_link( 'testimonial' ); ?>">
+				<a href="<?php echo SZ_Easy_Testimonials::get_testimonial_link(); ?>">
 
 					<?php if ( has_post_thumbnail() ) { ?>
 						<div class="testimonial-thumb-wrapper circular-image" style="background: url(<?php echo SZ_Easy_Testimonials::get_thumb_url(); ?>) no-repeat;"></div>
@@ -33,8 +33,11 @@ if ( $testimonials->have_posts() ): ?>
 				<div class="<?php echo $css['content_class']; ?>">
 
 					<blockquote>
-						<span class="<?php echo $css['title_class']; ?>"><strong><?php the_title(); ?></strong></span>
-						<?php echo SZ_Easy_Testimonials::get_custom_excerpt( get_the_excerpt() ); ?>
+						<h4 class="testimonial-header"><?php the_title(); ?></h4>
+						<span class="testimonial-content">
+							<?php echo SZ_Easy_Testimonials::get_custom_excerpt( get_the_excerpt() )?>
+							<a href="<?php echo SZ_Easy_Testimonials::get_testimonial_link(); ?>"> more...</a>
+						</span>
 					</blockquote>
 
 				</div>
