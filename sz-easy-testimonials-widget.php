@@ -72,7 +72,6 @@ class SZ_Easy_Testimonials_Widget extends WP_Widget
 		/**
 		 * Render our widget
 		 */
-		echo $args['before_widget'];
 
 		// Render title with link
 		if ( $instance['title'] != '' ){ ?>
@@ -85,8 +84,6 @@ class SZ_Easy_Testimonials_Widget extends WP_Widget
 		<?php }
 
 		SZ_Easy_Testimonials::do_testimonials( $query, $instance );
-
-		echo $args['after_widget'];
 
 		wp_reset_query();
 
